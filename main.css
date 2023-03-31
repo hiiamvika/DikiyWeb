@@ -12,6 +12,17 @@ header {
     font-size: 16pt;
 }
 
+header:hover {
+    color: rgb(0, 0, 0);
+    transition: 0.3;
+}
+
+header:active {
+    color: black;
+    font-size: 16pt;
+    transition: 0.3s;
+}
+
 footer {
     background: linear-gradient(to right, red, orange, yellow,green,blue,darkblue,purple);
     color: rgb(147, 244, 181);
@@ -19,6 +30,17 @@ footer {
     font-size: 16pt;
     font-style: italic;
     text-align: right;
+}
+
+footer:hover {
+    color: black;
+    transition: 0.3s;
+}
+
+footer:active {
+    color: black;
+    font-size: 16pt;
+    transition: 0.3s;
 }
 
 a {
