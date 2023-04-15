@@ -12,6 +12,10 @@ header {
     font-size: 16pt;
 }
 
+main {
+    margin: 10px 20px;
+}
+
 header:hover {
     color: rgb(0, 0, 0);
     transition: 0.3;
@@ -50,6 +54,7 @@ a {
 }
 a:visited {
     color: rgb(220, 93, 38);
+    font-size: 40px;
 }
 a:hover {
     color: red;
@@ -63,3 +68,6 @@ a:active {
     color: pink;
     background-color: green;
 }
+/* ::-webkit-scrollbar { */
+    /* width: 0; */
+  /* } */
