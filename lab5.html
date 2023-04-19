@@ -40,7 +40,7 @@
             alert('Деление '+ a +' и '+ b +' равно ' + result);
         }
         function showAuthor() {
-            let author = 'Автор страницы:\nКрышева Виктория Дмитриевна\n Че как дела вообще?';
+            let author = 'Автор страницы:\nКрышева Виктория Дмитриевна\nЧе как дела вообще?';
             alert(author)
         }
         function changeOutput(buttonNum, backColor, textColor, borderColor) {
@@ -49,6 +49,20 @@
             output.style.backgroundColor = backColor;
             output.style.color = textColor;
             output.style.border = borderColor;
+        }
+        function pay() {
+            let inputC = document.getElementById('numberC');
+            let inputD = document.getElementById('numberD');
+            let inputE = document.getElementById('numberE');
+            let inputF = document.getElementById('numberF');
+            let inputG = document.getElementById('numberG');
+            let c = parseInt(inputC.value)
+            let d = parseInt(inputD.value);
+            let e = parseInt(inputE.value);
+            let f = parseInt(inputF.value);
+            let g = parseInt(inputG.value);
+            let resulting = (c*200) + (d * 100) + (e * 80) + (f * 150) + (g * 300)
+            outputTwo.innerHTML = 'Общая цена: ' + resulting
         }
     </script>
     <style>
@@ -64,12 +78,69 @@
             text-align: center;
             cursor: pointer;
             padding: 11px;
+            margin: 5px;
         }
         #output {
             border: 1px solid;
             width: 300px;
             height: 40px;
+            margin: 3px;
         }
+        .bag {
+            border: 2px solid;
+            border-radius: 8px;
+            background-color: fuchsia;
+            color: azure;
+            border-color: darkmagenta;
+            font-size: 14px;
+            padding: 15px;
+            height: 310px;
+            width: 242px;
+            margin: 17px;
+            position: relative;
+            left: 437px;
+            font-weight: bold;
+        }
+        #outputTwo {
+            border: 1px;
+            width: 300px;
+            height: 40px;
+            margin: 10px;
+            color: rgb(145, 1, 54);
+            font-size: 18px;
+        }
+        /* .button {
+            width: 100px;
+	        height: 100px;
+            border-radius: 50px;
+            margin: 5px;
+            float: left;
+            line-height: 120px;
+            font-size: 40px; 
+            background: dodgerblue; 
+            color: white; 
+            margin-top: 60px; 
+            width: 320px;
+            margin-right: 10px; 
+            text-align: center;
+        } */
+        /* .button {
+            width: 100px;
+	        height: 100px;
+            -moz-border-radius: 50px;
+	        -webkit-border-radius: 50px;
+            border-radius: 50px;
+            margin: 5px;
+            float: left;
+            line-height: 120px;
+            font-size: 40px; 
+            background: dodgerblue; 
+            color: white; 
+            margin-top: 60px; 
+            width: 320px;
+            margin-right: 10px; 
+            text-align: center;
+        } */
     </style>
 </head>
 <body>
@@ -92,7 +163,34 @@
             <input type="button" value="Кнопка 4" onclick = "changeOutput(4, 'pink', 'purple', '3px solid grey')">
         </div>
 
+        
         <div id="output"></div>
+        
+        <div class="bag">
+           <h1>Корзина товаров</h1> 
+            Бананы (200р/шт)<br>
+            <input type="number" value="0" id="numberC"><br>
+            Яблоки (100р/шт)<br>
+            <input type="number" value="0" id="numberD"><br>
+            Груши (80р/шт)<br>
+            <input type="number" value="0" id="numberE"><br>
+            Апельсины (150р/шт)<br>
+            <input type="number" value="0" id="numberF"><br>
+            Дыни (300р/шт)<br>
+            <input type="number" value="0" id="numberG"><br>
+            <input type="button" value="Рассчитать" onclick="pay()"><br>
+            <div id="outputTwo">Общая цена: </div>
+        </div>
+            <!-- <div class="circles"><input type="button" value="1" onclick = "()"></div>
+            <div class="circles"><input type="button" value="2" onclick = "()"></div>
+            <div class="circles"><input type="button" value="3" onclick = "()"></div>
+            <div class="circles"><input type="button" value="4" onclick = "()"></div>
+            <div class="circles"><input type="button" value="5" onclick = "()"></div>
+            <div class="circles"><input type="button" value="6" onclick = "()"></div>
+            <div class="circles"><input type="button" value="7" onclick = "()"></div>
+            <div class="circles"><input type="button" value="8" onclick = "()"></div>
+            <div class="circles"><input type="button" value="9" onclick = "()"></div>
+            <div class="circles"><input type="button" value="10" onclick = "()"></div> -->
     </main>
     <footer onclick="showAuthor()">
         &copy; Крышева В.Д., ФБИ-12, 2 курс, 2023
