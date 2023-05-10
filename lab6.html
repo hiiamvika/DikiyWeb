@@ -6,13 +6,107 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Крышева В.Д. Лабораторная работа 6</title>
     <link rel="stylesheet" href="main.css">
+    <script>
+        let number;
+        let count = 0;
+        function startGame() {
+            number = Math.floor(Math.random() * 100) + 1;
+            let screen = document.getElementsByClassName('game');
+            screen[0].style.display = 'none';
+            screen[1].style.display = 'block';
+        }
+        function guess() {
+            count++;
+            let input = document.getElementById('user-number');
+            let userNumber = parseInt(input.value);
+            let message = document.getElementById('result');
+            if (userNumber < 1) {
+                message.innerHTML = 'Введите число от 1 до 100!';
+            }
+            else if (userNumber > 100) {
+                message.innerHTML = 'Введите число от 1 до 100!';
+            }
+            else if (userNumber > number) {
+                message.innerHTML = 'Вы ввели слишком большое число';
+            }
+            else if  (userNumber < number) {
+                message.innerHTML = 'Вы ввели слишкoм маленькое число';
+            }
+            else {
+            let screen = document.getElementsByClassName('game');
+            screen[1].style.display = 'none';
+            screen[2].style.display = 'block';
+            let displayNumber = document.getElementById('number');
+            displayNumber.innerHTML = number;
+            document.getElementById('try-count').innerHTML = count;
+        }
+        }
+        function again(){
+            let input = document.getElementById('user-number');
+            input.value = null; //стерла предыдущее число в строке ввода
+            let mes = document.getElementById('result');
+            mes.innerHTML = ' ';//стерла предыдущую надпись 
+            number = clearInterval(number);
+            count = 0; //обнулила число попыток
+            count++;//прибавляю попытки
+            let screen = document.getElementsByClassName('game');
+            screen[2].style.display = 'none';//скрыла третий экран
+            screen[1].style.display = 'block';//показала второй экран
+            number = Math.floor(Math.random() * 100) + 1;//новое случайное число
+            document.getElementById('try-count').innerHTML = count;
+            let message = document.getElementById('result');
+        }
+    </script>
+    <style>
+        .game {
+            border: 2px solid;
+            border-radius: 8px;
+            background-color: fuchsia;
+            color: azure;
+            border-color: darkmagenta;
+            font-size: 14px;
+            padding: 15px;
+            height: min-content;
+            width: 242px;
+            margin: 10px auto;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <header> 
-        НГТУ, ФБ, Лабораторная работа 5
+        НГТУ, ФБ, Лабораторная работа 6
     </header>
     <main>
-            
+        <div class="game">
+            <button onclick="startGame()">
+                Сыграть в игру
+            </button>
+        </div>
+
+        <div class="game" style="display: none ;"> 
+            <h1>Угадай число!</h1>
+            <div>
+                Задумано число от 1 до 100. Угадаешь какое?<br>
+                <input type="number" value="0" min="1" max="100" id="user-number" style="width: 200px;"><br>
+                <button onclick="guess()">Угадать</button>
+                <div id="result"></div>
+            </div>
+        </div>
+
+        <div class="game" style="display: none;">
+            <h1>Поздравляем, вы выиграли!</h1>
+            <div>
+                Задуманное число: <span id="number"></span>
+            </div>
+            <div>
+                Количество попыток: <span id="try-count"></span>
+            </div>
+            <div>
+                <button onclick="again()">Сыграть еще раз</button>
+            </div>
+        </div>
     </main>
 
     <footer>
