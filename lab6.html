@@ -66,6 +66,20 @@
             screen[1].style.display = 'none';
             screen[0].style.display = 'block';
         }
+        function changeColor(div) {
+           if( div.style.backgroundColor == 'yellow') {
+            div.style.backgroundColor = 'red';
+            document.getElementById('color-name').innerHTML = 'красный';
+           }
+           else if ( div.style.backgroundColor == 'red') {
+            div.style.backgroundColor = 'black';
+            document.getElementById('color-name').innerHTML = 'чёрный';
+           }
+           else {
+            div.style.backgroundColor = 'yellow'
+            document.getElementById('color-name').innerHTML = 'желтый';
+           }
+        }
 
     </script>
     <style>
@@ -95,6 +109,18 @@
             width: 242px;
             margin: 10px auto;
             font-weight: bold;
+        }
+        .color {
+            border: 2px solid;
+            color: rgb(0, 164, 209);
+            border-color: darkmagenta;
+            font-size: 14px;
+            padding: 15px;
+            height: min-content;
+            width: 242px;
+            margin: 10px auto;
+            font-weight: bold;
+            background-color: yellow;   
         }
     </style>
 </head>
@@ -147,6 +173,12 @@
                 <li>Если вам написали "Введите число от 1 до 100!" - выполните это условие </li>
             </ol>
         </div>
+
+        <div class="color" ondblclick="changeColor(this)">
+            Color: <span id="color-name">yellow</span><br>
+            Сделайте двойной щелчок, чтобы изменить!
+        </div>
+
     </main>
 
     <footer>
