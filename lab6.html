@@ -56,6 +56,17 @@
             document.getElementById('try-count').innerHTML = count;
             let message = document.getElementById('result');
         }
+        function roolesOne(){
+            let screen = document.getElementsByClassName('rooles');
+            screen[0].style.display = 'none';
+            screen[1].style.display = 'block';
+        }
+        function roolesBlock(){
+            let screen = document.getElementsByClassName('rooles');
+            screen[1].style.display = 'none';
+            screen[0].style.display = 'block';
+        }
+
     </script>
     <style>
         .game {
@@ -71,6 +82,19 @@
             margin: 10px auto;
             font-weight: bold;
             text-align: center;
+        }
+        .rooles {
+            border: 2px solid;
+            border-radius: 8px;
+            background-color: rgb(241, 178, 241);
+            color: rgb(83, 0, 209);
+            border-color: darkmagenta;
+            font-size: 14px;
+            padding: 15px;
+            height: min-content;
+            width: 242px;
+            margin: 10px auto;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -106,6 +130,22 @@
             <div>
                 <button onclick="again()">Сыграть еще раз</button>
             </div>
+        </div>
+
+        <div onclick="roolesOne()" class="rooles">
+            <button>Показать правила игры</button>
+        </div>
+
+        <div onclick="roolesBlock()" class="rooles" style="display: none;">
+            <button>Скрыть правила игры</button>
+            <ol type="I">
+                <li>Нажмите кнопку "Сыграть в игру"</li>
+                <li>Напишите в строку ввода число от 1 до 100</li>
+                <li>Нажмите кнопку "Угадать"</li>
+                <li>Если вам написали "Вы ввели слишком большое число" - введите число меньше </li>
+                <li>Если вам написали "Вы ввели слишком маленькое число" - введите число больше</li>
+                <li>Если вам написали "Введите число от 1 до 100!" - выполните это условие </li>
+            </ol>
         </div>
     </main>
 
