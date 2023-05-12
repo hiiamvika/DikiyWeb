@@ -7,19 +7,19 @@
     <title>Крышева В.Д. Лабораторная работа 6</title>
     <link rel="stylesheet" href="main.css">
     <script>
-        let number;
-        let count = 0;
+        let number; //переменная которая доступна во всех функциях
+        let count = 0; //количество попыток равно 0
         function startGame() {
-            number = Math.floor(Math.random() * 100) + 1;
-            let screen = document.getElementsByClassName('game');
-            screen[0].style.display = 'none';
-            screen[1].style.display = 'block';
+            number = Math.floor(Math.random() * 100) + 1; //генерация числ от 1 до 100
+            let screen = document.getElementsByClassName('game'); //получаем элементы из класса гейм
+            screen[0].style.display = 'none'; //скрыли первый экран 
+            screen[1].style.display = 'block'; //показали второй экран
         }
         function guess() {
-            count++;
-            let input = document.getElementById('user-number');
-            let userNumber = parseInt(input.value);
-            let message = document.getElementById('result');
+            count++; //+1 с каждой попыткой 
+            let input = document.getElementById('user-number'); //нашли инпут 
+            let userNumber = parseInt(input.value);//взяли зн из инпута
+            let message = document.getElementById('result'); //нашли вывод результата
             if (userNumber < 1) {
                 message.innerHTML = 'Введите число от 1 до 100!';
             }
@@ -33,12 +33,12 @@
                 message.innerHTML = 'Вы ввели слишкoм маленькое число';
             }
             else {
-            let screen = document.getElementsByClassName('game');
+            let screen = document.getElementsByClassName('game');//если угадал число покажет 3 экран 
             screen[1].style.display = 'none';
             screen[2].style.display = 'block';
-            let displayNumber = document.getElementById('number');
+            let displayNumber = document.getElementById('number');//загаданное число 
             displayNumber.innerHTML = number;
-            document.getElementById('try-count').innerHTML = count;
+            document.getElementById('try-count').innerHTML = count; //количество попыток 
         }
         }
         function again(){
@@ -69,51 +69,55 @@
         function changeColor(div) {
            if( div.style.backgroundColor == 'yellow') {
             div.style.backgroundColor = 'red';
+            div.style.color = 'white';
             document.getElementById('color-name').innerHTML = 'красный';
            }
            else if ( div.style.backgroundColor == 'red') {
             div.style.backgroundColor = 'black';
+            div.style.color = 'blue';
             document.getElementById('color-name').innerHTML = 'чёрный';
+           }
+           else if ( div.style.backgroundColor == 'black') {
+            div.style.backgroundColor = 'blue';
+            div.style.color = 'black';
+            document.getElementById('color-name').innerHTML = 'голубой';
+           }
+           else if ( div.style.backgroundColor == 'blue') {
+            div.style.backgroundColor = 'green';
+            div.style.color = 'yellow';
+            document.getElementById('color-name').innerHTML = 'зеленый';
            }
            else {
             div.style.backgroundColor = 'yellow'
+            div.style.color = 'gray';
             document.getElementById('color-name').innerHTML = 'желтый';
            }
         }
-        // function move(div) {
-        //    if( div.style.left == '100px'){
-        //     div.style.left = '900px';
-        //     div.style.transform = 'rotate(0)';
-        //    }
-        //    else if (div.style.left =='900px') {
-        //     // div.style.transform = 'rotate(0)'
-        //     div.style.left = '100px';
-        //     div.style.transform = 'rotate(4turn)';
-        //    }
-        //    else {
-        //     div.style.left = '100px'
-        //     div.style.transform = 'rotate(0)'
-        //    }
-        // }
+        function move(div) {
+           if( div.style.left == '100px'){
+            div.style.left = '900px';
+            div.style.transform = 'rotate(0)';
+           }
+           else if (div.style.left =='900px') {
+            div.style.left = '100px';
+            div.style.transform = 'rotate(4turn)';
+           }
+           else {
+            div.style.left = '100px'
+            div.style.transform = 'rotate(0)'
+           }
+        }
+        let width = 100;
         function boom(div) {
-            // // width = bodyInnerWidth + 'px'; 
-            // // let width = div.offsetWidth;
-            // element = getElementById('boom')
-            // let width = element.offsetWidth;
-            // // let width = div.style.width;
-            // if (width < '1000px'){
-            //     element.style.width = `${width + 50}px`;
-            //     // width += 50;
-            //     // let h= width + 'px';
-            //     // element.style.width = h;
-            // }
-            // else {
-            //     element.style.width = '100px';
-            // }
-            let bodyInnerWidth = div.offsetWidth + 50;
-            if (bodyInnerWidth >= 1000) bodyInnerWidth = 100;
-            div.style.width = bodyInnerWidth + 'px';
-            div.textContent = bodyInnerWidth + 'px';
+            if (width >= 1000){
+                div.style.width = '100px';
+                width = 100;
+            }
+            else {
+                width += 50;
+                div.style.width = (width + 'px'); 
+            }
+
         }
         function filter() {
             let color = document.getElementById('wear-color').value;
@@ -191,7 +195,7 @@
             background-color: yellow; 
             text-align: center;  
         }
-        /* .block {
+        .block {
             cursor: pointer;
             border: 2px solid;
             color: rgb(25, 0, 255);
@@ -204,9 +208,9 @@
             margin: 10px;
             position: absolute;
             text-align: center;
-            transition: 6s;
+            transition: 2s;
             left: 100px; 
-        } */
+        }
         .block2 {
             cursor: pointer;
             border: 2px solid;
@@ -273,7 +277,7 @@
             </div>
         </div>
 
-        <!-- <div onclick="roolesOne()" class="rooles">
+        <div onclick="roolesOne()" class="rooles">
             <button>Показать правила игры</button>
         </div>
 
@@ -287,7 +291,7 @@
                 <li>Если вам написали "Вы ввели слишком маленькое число" - введите число больше</li>
                 <li>Если вам написали "Введите число от 1 до 100!" - выполните это условие </li>
             </ol>
-        </div> -->
+        </div>
 
         <!-- <div class="color" ondblclick="changeColor(this)">
             Color: <span id="color-name">yellow</span><br>
@@ -299,7 +303,7 @@
             Щелкни меня 
         </div> -->
 
-        <div class="block2" onclick="boom(this)"></div>
+        <div class="block2" onclick="boom(this)">Прекрати, щас лопну!!!</div>
 
         <div class="filter">
             Цвет одежды:
