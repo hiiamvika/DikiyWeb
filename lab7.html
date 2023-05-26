@@ -49,15 +49,98 @@
             }
         }
 
-    </script>
-    <style>
-        /* .bloki {
-            width: 30px;
-            height: 30px;
-            background-color: blue;
-        } */
+        function Krugi() {
+            let krugi = document.getElementById('krugiDiv');
+            let button = document.getElementById('changeButton')
+            let input = document.getElementById('inputKrugi');
+            let inputKrugi = parseInt(input.value);
+            let check = 0;
+            for(let i = 0; i < inputKrugi ; i++){
+                let krug = document.createElement('div'); 
+                if (check==0) {
+                    krug.style.backgroundColor = 'red';
+                    check = 1;
+                } 
+                else {
+                    krug.style.backgroundColor = 'blue';
+                    check = 0;
+                }
+                krug.style.paddingTop = '32px';
+                krug.style.paddingBottom = '32px';
+                krug.style.paddingLeft = '36px';
+                krug.style.paddingRight = '36px';
+                krug.style.display = 'inline-block';
+                krug.style.borderRadius = '200px'
+                krug.innerText = inputKrugi - i;
+                krug.style.marginRight = '12px';
+                krug.style.fontSize = '20px';
+                krug.style.fontWeight = 'bold';
+                krugi.appendChild(krug);
+            }
+        }
 
-    </style>
+        function multiplication() {
+            let table = document.createElement('table');
+            let div = document.getElementById('multi')
+            for (let i = 13; i <= 33; i++) {
+                let number1 = document.createElement('tr');
+                let number2 = document.createElement('td');
+                number2.innerText = (`${i} * 76 = `);
+                number1.appendChild(number2);
+                let result = document.createElement('td');
+                let multiResult = i * 76;
+                result.innerText = multiResult;
+                
+                number1.appendChild(result);
+                table.appendChild(number1);
+                
+            }
+            div.appendChild(table);
+        }
+
+        let day = ['15.05.2023', '16.05.2023', '17.05.2023', '18.05.2023', 
+        '19.05.2023', '22.05.2023', '23.05.2023','24.05.2023',
+        '25.05.2023','26.05.2023'];
+        let cost = [48.11,49.83,49.63,49.03,48.77,48.28,48.52,48.60,49.40,49.23];
+    
+        function price() {
+            let table = document.getElementById('table');
+    
+          for (i = 0; i < day.length; i++) {
+            let row = document.createElement('tr');
+            let dayprice = document.createElement('td');
+            dayprice.innerHTML = day[i];
+            table.appendChild(row);
+            row.appendChild(dayprice);
+    
+            let costprice = document.createElement('td');
+            costprice.innerHTML = cost[i];
+            row.appendChild(costprice);
+
+            if (i > 0) {
+                let valPr = document.createElement('td');
+                let val = cost[i] - cost[i - 1];
+                val = val.toFixed(2);
+                valPr.innerHTML = val;
+                row.appendChild(valPr);
+            }
+        }
+        }
+        
+        function minMaxSrednee() {
+          let min = (Math.min(...cost));
+          document.getElementById('min').innerHTML = 'Минимальное значение: '+ min;
+          let max = (Math.max(...cost));
+          document.getElementById('max').innerHTML = 'Максимальное значение: '+ max;
+    
+          let sum = 0;
+          for (let i = 0; i < cost.length; i++) {
+            sum = sum + cost[i];
+          }
+          let m = sum / cost.length;
+          document.getElementById('Srednee').innerHTML = 'Среднее значение: '+ m;
+        } 
+    </script>
 </head>
 <body>
     <header> 
@@ -74,12 +157,27 @@
         <div id="detail"></div><br>
 
         <button onclick="addTransparentBlocks()">Создать полупрозрачные блоки</button>
-        <div id="transparent-blocks"></div>
+        <div id="transparent-blocks"></div><br>
+
+        <input type="number" value="5" placeholder="Введите число кругов" id="inputKrugi">
+        <button onclick="Krugi()" id="changeButton">Красное/голубое</button>
+        <div id="krugiDiv"></div><br>
+
+        <button onclick="multiplication()">Таблица умножения на 76</button>
+        <div id="multi"></div>
+
+        <button onclick="price(), onclick=minMaxSrednee()">Акции комапании "Селигдар"</button>
+        <table id="table" border="1"></table>
+    
+        <div id="Srednee"> </div>
+        <div id="min"></div>
+        <div id="max"></div>
+
 
     </main>
 
-     <footer>
+     <!-- <footer>
         &copy; Крышева В.Д., ФБИ-12, 2 курс, 2023
-    </footer>
+    </footer> -->
 </body>
 </html>
