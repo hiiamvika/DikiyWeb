@@ -8,20 +8,36 @@
     <link rel="stylesheet" href="main.css">
     <script src="lab8.js"></script>
     <style>
+        .time{
+            display: inline;
+            position: absolute;
+            left: 1100px;
+        }
     </style>
     </head>
     <body onload="ShowDate()">
         <header> 
             НГТУ, ФБ, Лабораторная работа 7
+            <div id="time" class="time">00:00:00</div>
         </header>
     
         <main>
             <div id="current-date"></div>
+
+            <div>
+                <label>Дата рождения: <input type="date" id="input-date"></label>
+            </div>
+            <div>
+                <button onclick="showDaysCount()">Показать число дней</button>
+                <button onclick="delite()">Отчистить поле</button>
+            </div>
+            <div id="birthday"></div>
             <div id="current-date2"></div>
             <div id="current-date3"></div>
             <div id="current-date4"></div>
             <div id="current-date5"></div>
             <div id="current-date6"></div>
+
 
         </main>
         <footer>
